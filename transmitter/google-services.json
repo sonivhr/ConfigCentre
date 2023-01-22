@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "889287183089",
+    "project_id": "configcentre-fa1fd",
+    "storage_bucket": "configcentre-fa1fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889287183089:android:1ef11d2aea46028bd83750",
+        "android_client_info": {
+          "package_name": "com.configcentre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889287183089-gdeb3oai19i9vfg1f1obo0omknilm4n8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRAqNMeY-WkYQ8iyuSkJQGhw2QJAbupnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889287183089-gdeb3oai19i9vfg1f1obo0omknilm4n8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
