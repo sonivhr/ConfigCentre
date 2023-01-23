@@ -27,13 +27,11 @@ class ConfigurationUpdateWorker(
     private fun updateConfigurations() {
         databaseReference.child(DATABASE_PATH_STRING).get()
             .addOnSuccessListener { dataSnapshot ->
-                dataSnapshot.getValue<List<Configuration>>()?.forEach {
+                dataSnapshot.getValue<List<Configuration>>()?.forEach { configuration ->
                     Intent().also { intent ->
                         intent.action = INTENT_BROADCAST_ACTION
-                        intent.setPackage(it.packageId)
-                        intent.putExtra(EXTRA_USERNAME, it.userName)
-                        intent.putExtra(EXTRA_PASSWORD, it.password)
-                        intent.putExtra(EXTRA_MESSAGE, it.message)
+                        intent.setPackage(configuration.packageId)
+                        intent.putExtra(EXTRA_CONFIGURATION, configuration)
                         context.sendBroadcast(intent)
                     }
                 }
@@ -47,8 +45,6 @@ class ConfigurationUpdateWorker(
         private const val TAG = "ConfigUpdateWorker"
         const val DATABASE_PATH_STRING = "configurations"
         const val INTENT_BROADCAST_ACTION = "com.configcentre.broadcast.CONFIG_UPDATES"
-        const val EXTRA_USERNAME = "userName"
-        const val EXTRA_PASSWORD = "password"
-        const val EXTRA_MESSAGE = "message"
+        const val EXTRA_CONFIGURATION = "extra_configuration"
     }
 }
