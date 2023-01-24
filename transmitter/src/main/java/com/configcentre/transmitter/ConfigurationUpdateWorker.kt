@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 class ConfigurationUpdateWorker(
     private val context: Context,
@@ -25,13 +26,14 @@ class ConfigurationUpdateWorker(
     }
 
     private fun updateConfigurations() {
+        val gson = Gson()
         databaseReference.child(DATABASE_PATH_STRING).get()
             .addOnSuccessListener { dataSnapshot ->
                 dataSnapshot.getValue<List<Configuration>>()?.forEach { configuration ->
                     Intent().also { intent ->
                         intent.action = INTENT_BROADCAST_ACTION
                         intent.setPackage(configuration.packageId)
-                        intent.putExtra(EXTRA_CONFIGURATION, configuration)
+                        intent.putExtra(EXTRA_CONFIGURATION, gson.toJson(configuration))
                         context.sendBroadcast(intent)
                     }
                 }

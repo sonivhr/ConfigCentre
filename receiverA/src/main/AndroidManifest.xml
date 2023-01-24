@@ -21,6 +21,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <receiver android:name=".configupdatereceiver.ConfigUpdateBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.configcentre.broadcast.CONFIG_UPDATES" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
